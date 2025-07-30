@@ -1,5 +1,6 @@
 "use client"
 
+import Reveal from "@/app/Reveal"
 import { ExternalLink, Github, Briefcase } from "lucide-react"
 import Image from "next/image"
 
@@ -155,58 +156,60 @@ export default function Projects() {
   ]
 
   return (
-    <section id="projects" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Dự án</h2>
-          <p className="text-xl text-gray-600">Các dự án tiêu biểu tôi đã tham gia</p>
-        </div>
+    <Reveal>
+      <section id="projects" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Dự án</h2>
+            <p className="text-xl text-gray-600">Các dự án tiêu biểu tôi đã tham gia</p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-            >
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <Briefcase size={20} className="text-blue-600" />
-                  <h3 className="text-xl font-semibold">{project.title}</h3>
-                </div>
-                <p className="text-sm text-gray-500 mb-2">{project.period}</p>
-                <p className="text-gray-600 mb-2">
-                  <span className="font-medium">Khách hàng:</span> {project.client}
-                </p>
-                <p className="text-gray-600 mb-4">
-                  <span className="font-medium">Số lượng người tham gia:</span> {project.teamSize} người
-                </p>
-                <p className="text-sm text-blue-600 mb-4">Vai trò: {project.role}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+              >
+                <div className="p-6">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Briefcase size={20} className="text-blue-600" />
+                    <h3 className="text-xl font-semibold">{project.title}</h3>
+                  </div>
+                  <p className="text-sm text-gray-500 mb-2">{project.period}</p>
+                  <p className="text-gray-600 mb-2">
+                    <span className="font-medium">Khách hàng:</span> {project.client}
+                  </p>
+                  <p className="text-gray-600 mb-4">
+                    <span className="font-medium">Số lượng người tham gia:</span> {project.teamSize} người
+                  </p>
+                  <p className="text-sm text-blue-600 mb-4">Vai trò: {project.role}</p>
 
-                <div className="mb-4">
-                  <h4 className="text-sm font-semibold text-gray-700 mb-2">Nhiệm vụ:</h4>
-                  <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
-                    {project.responsibilities.map((task, taskIndex) => (
-                      <li key={taskIndex}>{task}</li>
+                  <div className="mb-4">
+                    <h4 className="text-sm font-semibold text-gray-700 mb-2">Nhiệm vụ:</h4>
+                    <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
+                      {project.responsibilities.map((task, taskIndex) => (
+                        <li key={taskIndex}>{task}</li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-wrap gap-2">
+                    <h4 className="text-sm font-semibold text-gray-700 w-full">Công nghệ sử dụng:</h4>
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
                     ))}
-                  </ul>
-                </div>
-
-                <div className="flex flex-wrap gap-2">
-                  <h4 className="text-sm font-semibold text-gray-700 w-full">Công nghệ sử dụng:</h4>
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Reveal>
   )
 }

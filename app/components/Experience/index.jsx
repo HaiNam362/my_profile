@@ -1,3 +1,4 @@
+import Reveal from "@/app/Reveal"
 import { Calendar, MapPin } from "lucide-react"
 
 export default function Experience() {
@@ -48,53 +49,55 @@ export default function Experience() {
   ]
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Kinh nghiệm làm việc</h2>
-          <p className="text-xl text-gray-600">Lịch sử công việc và thành tích</p>
-        </div>
+    <Reveal>
+      <section id="experience" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Kinh nghiệm làm việc</h2>
+            <p className="text-xl text-gray-600">Lịch sử công việc và thành tích</p>
+          </div>
 
-        <div className="max-w-4xl mx-auto">
-          {experiences.map((exp, index) => (
-            <div key={index} className="relative pl-8 pb-12 last:pb-0">
-              {/* Timeline line */}
-              <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-blue-200"></div>
+          <div className="max-w-4xl mx-auto">
+            {experiences.map((exp, index) => (
+              <div key={index} className="relative pl-8 pb-12 last:pb-0">
+                {/* Timeline line */}
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-blue-200"></div>
 
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-0 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1.5"></div>
+                {/* Timeline dot */}
+                <div className="absolute left-0 top-0 w-4 h-4 bg-blue-600 rounded-full transform -translate-x-1.5"></div>
 
-              <div className="bg-white p-6 rounded-lg shadow-lg ml-6">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900">{exp.position}</h3>
-                    <h4 className="text-lg text-blue-600 font-medium">{exp.company}</h4>
-                  </div>
-                  <div className="flex flex-col md:items-end text-sm text-gray-500 mt-2 md:mt-0">
-                    <div className="flex items-center gap-1">
-                      <Calendar size={16} />
-                      {exp.duration}
+                <div className="bg-white p-6 rounded-lg shadow-lg ml-6">
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">{exp.position}</h3>
+                      <h4 className="text-lg text-blue-600 font-medium">{exp.company}</h4>
                     </div>
-                    <div className="flex items-center gap-1 mt-1">
-                      <MapPin size={16} />
-                      {exp.location}
+                    <div className="flex flex-col md:items-end text-sm text-gray-500 mt-2 md:mt-0">
+                      <div className="flex items-center gap-1">
+                        <Calendar size={16} />
+                        {exp.duration}
+                      </div>
+                      <div className="flex items-center gap-1 mt-1">
+                        <MapPin size={16} />
+                        {exp.location}
+                      </div>
                     </div>
                   </div>
+
+                  <ul className="space-y-2">
+                    {exp.description.map((item, itemIndex) => (
+                      <li key={itemIndex} className="flex items-start gap-2">
+                        <span className="text-blue-600 mt-1.5">•</span>
+                        <span className="text-gray-700">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <ul className="space-y-2">
-                  {exp.description.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-2">
-                      <span className="text-blue-600 mt-1.5">•</span>
-                      <span className="text-gray-700">{item}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Reveal>
   )
 }
