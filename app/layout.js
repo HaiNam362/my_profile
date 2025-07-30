@@ -21,11 +21,7 @@ import "./globals.css";
 export default function RootLayout({ children }) {
     return (
         <html>
-            <body
-            // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                {children}
-            </body>
+            <body>{children}</body>
         </html>
     );
 }
